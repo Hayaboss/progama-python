@@ -17,7 +17,7 @@ with open("gastos.txt", "a") as arquivo:  # Modo "a" para adicionar sem sobrescr
         valor = float(input("Digite o valor gasto com a categoria informada acima R$:"))
         if valor<0:
             print("Valor invalido!")
-            continue #o continue faz com q o programa iguinore oq ta abaixo dele e volte pra o inicio do while
+            continue #o continue faz com q o programa ignora oq ta abaixo dele e volte pra o inicio do while
         else:
             gastos.append((categoria, valor))
         arquivo.write(f"{categoria}, {valor:.2f}\n")
