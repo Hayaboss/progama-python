@@ -1,5 +1,4 @@
 # importando da pagina relatorio que seria a soma que dasayev fez
-
 from relatorio import calcular_saldo
 
 def solicitar_dados_usuario():
@@ -15,12 +14,15 @@ def registrar_gastos():
 
     with open("gastos.txt", "a") as arquivo:  # Modo "a" para adicionar sem sobrescrever
         while True:
-            categoria = input("Digite a categoria de gasto (ou 'sair' para encerrar): ")
+            categoria = str(input("Digite a categoria de gasto (ou 'sair' para encerrar): "))
             if categoria.lower() == "sair":
                 break
-            valor = float(input("Digite o valor gasto com a categoria informada acima R$: "))
-            gastos.append((categoria, valor))
-
+            valor = float(input("Digite o valor gasto com a categoria informada acima R$:"))
+            if valor<0:
+                print("Valor invalido!")
+                continue
+            else:
+                gastos.append((categoria, valor))
             # Salvando no arquivo
             arquivo.write(f"{categoria}, {valor:.2f}\n")
 
