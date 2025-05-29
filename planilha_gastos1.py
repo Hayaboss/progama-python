@@ -20,7 +20,7 @@ def registrar_gastos():
             valor = float(input("Digite o valor gasto com a categoria informada acima R$:"))
             if valor<0:
                 print("Valor invalido!")
-                continue
+                continue #o continue faz com q o programa iguinore oq ta abaixo dele e volte pra o inicio do while
             else:
                 gastos.append((categoria, valor))
             # Salvando no arquivo
