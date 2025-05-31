@@ -11,6 +11,11 @@ gastos = []
 print("\nAgora, vamos registrar seus gastos mensais.")
 with open("gastos.txt", "a") as arquivo:  # Modo "a" para adicionar sem sobrescrever
     while True:
+        print("Gastos por categoria:")
+        print("-------------------------")
+        for i in range(len(gastos)):
+            print(i, "-", gastos[i][0], "- R$: %.2f" % gastos[i][1])
+        print("-------------------------")
         categoria = str(input("Digite a categoria de gasto (ou 'sair' para encerrar): "))
         if categoria == "sair":
             break
@@ -21,6 +26,7 @@ with open("gastos.txt", "a") as arquivo:  # Modo "a" para adicionar sem sobrescr
         else:
             gastos.append((categoria, valor))
         arquivo.write(f"{categoria}, {valor:.2f}\n")
+        arquivo.close
 
 # Calcular totais
 total_gastos, saldo_restante = calcular_saldo(salario, gastos)
@@ -31,9 +37,10 @@ print("Nome:", nome)
 print("Salário: R$ %.2f" % salario)
 print()
 print("Gastos por categoria:")
+print("-------------------------")
 for i in range(len(gastos)):
-            print(i, "-", gastos[i][0], "- R$: %.2f" % gastos[i][1])
-print()
+        print(i, "-", gastos[i][0], "- R$: %.2f" % gastos[i][1])
+print("-------------------------")
 print("Total de gastos: R$ %.2f" % total_gastos)
 print("Saldo restante: R$ %.2f" % saldo_restante)
 
