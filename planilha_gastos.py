@@ -16,15 +16,29 @@ with open("gastos.txt", "a") as arquivo:  # Modo "a" para adicionar sem sobrescr
         for i in range(len(gastos)):
             print(i, "-", gastos[i][0], "- R$: %.2f" % gastos[i][1])
         print("-------------------------")
-        categoria = str(input("Digite a categoria de gasto (ou 'sair' para encerrar): "))
-        if categoria == "sair":
+        categoria = str(input("Digite a categoria de gasto ('r' para remover um item da Lista de gastos ou 'sair' para encerrar): "))
+        if categoria.lower() == "sair":
             break
+        elif categoria.lower() == "r":
+            x=int(input("Informe o códugo do item da Lista a ser removido:"))
+            print()
+            if (x+1) <= len(gastos):
+                gastos.pop(x)
+                continue
+            else:
+                print()
+                print("O item", x, "não está na Lista")
+                print()
+                continue
         valor = float(input("Digite o valor gasto com a categoria informada acima R$:"))
         if valor<0:
+            print()
             print("Valor invalido!")
+            print()
             continue #o continue faz com q o programa ignora oq ta abaixo dele e volte pra o inicio do while
         else:
             gastos.append((categoria, valor))
+            # Salvando no arquivo
         arquivo.write(f"{categoria}, {valor:.2f}\n")
         arquivo.close
 
